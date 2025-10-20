@@ -37,3 +37,13 @@ MonoBehaviour:
     m_SpecifySize: 0
     m_Name: Substrate1
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5121863484550409604
+      m_GuidHigh: 7473899784902113949
+    m_SerializedTextureGuid:
+      m_GuidLow: 10337130021795828978
+      m_GuidHigh: 4772691139996764760
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Zombatar_1
+    m_Texture: {fileID: 0}
