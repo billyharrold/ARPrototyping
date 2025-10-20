@@ -1,83 +1,82 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 public class ImageTracker : MonoBehaviour
 {
 
-    private ARTrackedImageManager trackedImageManager;
-    public GameObject[] ArPrefabs;
+    [SerializeField] private ARTrackedImageManager trackedImageManager;
+    //public GameObject[] ArPrefabs;
 
-    List<GameObject> ARObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> ARObjects;
 
-
-   
-    // Update is called once per frame
-    void Update()
-    {
-        outputTracking();
-    }
-
-    void outputTracking()
-    {
-        int i = 0;
-        foreach (var trackedImage in trackedImageManager.trackables)
-        {
-            if (trackedImage.trackingState == TrackingState.Limited)
-            {
-                ARObjects[i].SetActive(false);
-            }
-            if (trackedImage.trackingState == TrackingState.Tracking)
-            {
-                ARObjects[i].SetActive(true);
-            }
-            i++;
-
-        }
-    }
-
-    private void Awake()
-    {
-        trackedImageManager = GetComponent<ARTrackedImageManager>();
-    }
+    private readonly Dictionary<string, GameObject> spawnedObjects = new();
 
     private void OnEnable()
     {
-        trackedImageManager.trackablesChanged.AddListener(OnTrackedImagesChange);
+        
+        trackedImageManager.trackablesChanged.AddListener(OnTrackedImagesChanged);
     }
 
     private void OnDisable()
     {
-        trackedImageManager.trackablesChanged.RemoveListener(OnTrackedImagesChange); 
+        trackedImageManager.trackablesChanged.RemoveListener(OnTrackedImagesChanged);
     }
 
-    public void OnTrackedImagesChange(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
+    private void Start()
     {
-        foreach (var trackedImage in eventArgs.added)
+        
+        foreach (var prefab in ARObjects)
         {
-            foreach (var arPrefab in ARObjects)
-            {
-                if (trackedImage.referenceImage.name == arPrefab.name)
-                {
-                    var newPrefab = Instantiate(arPrefab, trackedImage.transform);
-                    ARObjects.Add(newPrefab);
-                }
-            }
-
+            GameObject newObject = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+            newObject.name = prefab.name;
+            newObject.SetActive(false);
+            spawnedObjects.Add(prefab.name, newObject);
         }
-
-        foreach (var trackedImage in eventArgs.updated)
-        {
-            foreach (var gameObject in ARObjects)
-            {
-                if (gameObject.name == trackedImage.name)
-                {
-                    gameObject.SetActive(trackedImage.trackingState == TrackingState.Tracking);
-                }
-            }
-        }
-
     }
+
+    private void OnTrackedImagesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
+    {
+        // Handle added tracked images
+        foreach (var trackedImage in eventArgs.added)
+            UpdateTracking(trackedImage);
+
+        // Handle updated tracked images (e.g., moved or re-tracked)
+        foreach (var trackedImage in eventArgs.updated)
+            UpdateTracking(trackedImage);
+
+        // Handle removed tracked images
+        foreach (var trackedImagePair in eventArgs.removed)
+        {
+            ARTrackedImage trackedImage = trackedImagePair.Value;
+            string imageName = trackedImage.referenceImage.name;
+            if (spawnedObjects.TryGetValue(imageName, out var obj))
+                obj.SetActive(false);
+        }
+    }
+
+    private void UpdateTracking(ARTrackedImage trackedImage)
+    {
+        string imageName = trackedImage.referenceImage.name;
+
+        if (!spawnedObjects.TryGetValue(imageName, out var obj))
+            return;
+
+        if (trackedImage.trackingState == TrackingState.Tracking)
+        {
+            obj.SetActive(true);
+            obj.transform.SetPositionAndRotation(
+                trackedImage.transform.position,
+                trackedImage.transform.rotation
+            );
+        }
+        else
+        {
+            obj.SetActive(false);
+        }
+    }
+
 }

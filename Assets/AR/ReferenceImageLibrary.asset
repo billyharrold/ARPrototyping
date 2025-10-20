@@ -25,7 +25,7 @@ MonoBehaviour:
       m_GuidHigh: 13993014159141799161
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: Zombatar_1
+    m_Name: Enzyme1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4612965195753146532
@@ -35,5 +35,5 @@ MonoBehaviour:
       m_GuidHigh: 4881415551641788490
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: cowboy
+    m_Name: Substrate1
     m_Texture: {fileID: 0}
