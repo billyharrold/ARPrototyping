@@ -15,6 +15,8 @@ public class ImageTracker : MonoBehaviour
 
     private readonly Dictionary<string, GameObject> spawnedObjects = new();
 
+    private Vector3 object_position;
+
     private void OnEnable()
     {
         
@@ -67,11 +69,17 @@ public class ImageTracker : MonoBehaviour
 
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
+            
+
             obj.SetActive(true);
+
+            Vector3 offset = trackedImage.transform.up * 0.1f;
+
             obj.transform.SetPositionAndRotation(
-                trackedImage.transform.position,
+                trackedImage.transform.position + offset,
                 trackedImage.transform.rotation
             );
+            
         }
         else
         {
