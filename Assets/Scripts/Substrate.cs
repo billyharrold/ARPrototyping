@@ -16,6 +16,7 @@ public class Substrate : InteractableObjectBase
                 Debug.Log("IDLE - Subs");
                 break;
             case State.Active:
+                Debug.Log(state.ToString() + "Substrate");
                 break;
             
         }
