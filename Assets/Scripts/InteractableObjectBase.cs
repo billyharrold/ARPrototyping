@@ -8,7 +8,7 @@ public abstract class InteractableObjectBase : MonoBehaviour
 {
 
     private List<InteractableObjectBase> _interactables = new List<InteractableObjectBase>();
-    public bool hasMerged;
+    
 
     protected enum State
     {
@@ -21,7 +21,7 @@ public abstract class InteractableObjectBase : MonoBehaviour
     {
         if (other.TryGetComponent<InteractableObjectBase>(out var interactable))
         {
-            hasMerged = true;
+            
             AddInteractable(interactable);
         }
     }
@@ -31,7 +31,7 @@ public abstract class InteractableObjectBase : MonoBehaviour
     {
         if (other.TryGetComponent<InteractableObjectBase>(out var interactable))
         {
-            hasMerged = false;
+            
             RemoveInteractable(interactable);
         }
 
