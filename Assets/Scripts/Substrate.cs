@@ -3,6 +3,7 @@ using UnityEngine.Assertions.Must;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Serialization;
 
 public class Substrate : InteractableObjectBase
 {
@@ -12,13 +13,20 @@ public class Substrate : InteractableObjectBase
 
     public float MoveSpeed = 0.3f;
     public float rotationSpeed = 2f;
-    public float detectionDistance = 10f;
 
-    public bool inRange = false;
-    public bool hasMerged = false;
+    public float seperationDelay = 0.5f;
+
+   
+    
 
     private Vector3 originalPosition;
     private Quaternion originalRotation;
+
+    private float timer = 0f;
+    private bool isTransitioning = false;
+    public bool hasMerged = false;
+
+
 
     private void Start()
     {
@@ -45,79 +53,64 @@ public class Substrate : InteractableObjectBase
 
     private void Update()
     {
-        if (hasMerged == true)
+        if (object_state == State.Active && hasMerged)
         {
             MoveToEnzyme();
         }
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // Check if its colliding with the right enzyme
-        if (other.CompareTag("Enzyme"))
+        else if (object_state == State.Idle && !hasMerged)
         {
-            float distance = Vector3.Distance(transform.position, other.transform.position);
-            if (distance < detectionDistance)
-            {
-                inRange = true;
-            }
-            
-          
-           
-
-
+            Debug.Log("Ill get to this part");
         }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Enzyme"))
+
+        if (isTransitioning)
         {
-            float distance = Vector3.Distance(transform.position, other.transform.position);
-            if (distance < detectionDistance)
+            timer -= Time.deltaTime;
+            if (timer < 0f)
             {
-                hasMerged = true;
+                isTransitioning = false;
+                if (object_state == State.Idle)
+                {
+                    hasMerged = false;
+                }
             }
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        inRange = false;
-        hasMerged = false;
-    }
-
-
 
     protected override void SetState(State state)
     {
         base.SetState(state);
         switch (state)
         {
-            case State.Idle:
-                //Debug.Log("IDLE - Subs");
-                Debug.Log(hasMerged + "Substrate");
-               // hasMerged = false;
-                break;
             case State.Active:
-                Debug.Log(hasMerged + "Substrate");
-                
-                
+                hasMerged = true;
+                isTransitioning = false;
                 break;
-            
+            case State.Idle:
+                timer = seperationDelay;
+                isTransitioning = true;
+                break;
         }
+
     }
+
+
+
+
+
+
+
+
 
     private void MoveToEnzyme()
     {
-        if (ActiveSite != null)
-        {
+       
+        Transform current_pos = Enzyme1.transform.Find("Merge Location");
+
+        transform.position = Vector3.Lerp(transform.position, current_pos.position, Time.deltaTime * MoveSpeed);
+         transform.rotation = Quaternion.Lerp(transform.rotation, ActiveSite.rotation, Time.deltaTime * MoveSpeed);
             
-                transform.position = Vector3.Lerp(transform.position, ActiveSite.position, Time.deltaTime * MoveSpeed);
-                transform.rotation = Quaternion.Lerp(transform.rotation, ActiveSite.rotation, Time.deltaTime * MoveSpeed);
             
-            
-        }
+        
 
     }
 
