@@ -124,6 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36beac0c5a46b7241ac518216d3f64a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveSite: {fileID: 0}
+  Enzyme: {fileID: 1654606601872665853, guid: e50c2f51c4ac31441950aaaab317e64e, type: 3}
+  Enzyme1: {fileID: 2143017829070452295, guid: e50c2f51c4ac31441950aaaab317e64e, type: 3}
+  MoveSpeed: 2
+  rotationSpeed: 2
 --- !u!54 &-6910795760555761845
 Rigidbody:
   m_ObjectHideFlags: 0
