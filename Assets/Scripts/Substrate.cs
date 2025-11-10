@@ -14,7 +14,7 @@ public class Substrate : InteractableObjectBase
     public float MoveSpeed = 0.3f;
     public float rotationSpeed = 2f;
 
-    public float seperationDelay = 0.5f;
+    public float detectionDistance = 0.05f;
 
    
     
@@ -22,9 +22,11 @@ public class Substrate : InteractableObjectBase
     private Vector3 originalPosition;
     private Quaternion originalRotation;
 
-    private float timer = 0f;
-    private bool isTransitioning = false;
+    
     public bool hasMerged = false;
+    private float unmergeTimer = 0f;
+    public float unmergeDelay = 0.3f;
+
 
 
 
@@ -53,27 +55,35 @@ public class Substrate : InteractableObjectBase
 
     private void Update()
     {
-        if (object_state == State.Active && hasMerged)
-        {
-            MoveToEnzyme();
-        }
-        else if (object_state == State.Idle && !hasMerged)
-        {
-            Debug.Log("Ill get to this part");
-        }
+        float distance = Vector3.Distance(transform.position, Enzyme1.transform.position);
 
-        if (isTransitioning)
+        // Check if within merge range
+        if (distance < detectionDistance)
         {
-            timer -= Time.deltaTime;
-            if (timer < 0f)
+            hasMerged = true;
+            unmergeTimer = 0f; // cancel unmerge countdown
+        }
+        else
+        {
+            if (hasMerged)
             {
-                isTransitioning = false;
-                if (object_state == State.Idle)
+                // Start unmerge countdown
+                unmergeTimer += Time.deltaTime;
+                if (unmergeTimer >= unmergeDelay)
                 {
                     hasMerged = false;
+                    unmergeTimer = 0f;
                 }
             }
         }
+
+        // Move if merged
+        if (hasMerged)
+        {
+            transform.position = Vector3.Lerp(transform.position, ActiveSite.position, Time.deltaTime * MoveSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, ActiveSite.rotation, Time.deltaTime * rotationSpeed);
+        }
+       
     }
 
     protected override void SetState(State state)
@@ -83,11 +93,11 @@ public class Substrate : InteractableObjectBase
         {
             case State.Active:
                 hasMerged = true;
-                isTransitioning = false;
+               
+                
                 break;
             case State.Idle:
-                timer = seperationDelay;
-                isTransitioning = true;
+                hasMerged = false;
                 break;
         }
 

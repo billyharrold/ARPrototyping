@@ -17,6 +17,23 @@ public abstract class InteractableObjectBase : MonoBehaviour
     }
     protected State object_state = State.Idle;
 
+    private float idleDelay = 0.3f;
+    private float idleTimer = 0f;
+
+    private void Update()
+    {
+        // countdown timer for idle transition
+        if (_interactables.Count == 0 && object_state == State.Active)
+        {
+            idleTimer -= Time.deltaTime;
+            if (idleTimer <= 0f)
+            {
+                SetState(State.Idle);
+            }
+        }
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<InteractableObjectBase>(out var interactable))
@@ -39,16 +56,27 @@ public abstract class InteractableObjectBase : MonoBehaviour
 
     protected void AddInteractable(InteractableObjectBase interactable)
     {
-        _interactables.Add(interactable);
-        SetState(State.Active);
+        if (_interactables.Contains(interactable))
+        {
+            _interactables.Add(interactable);
+            SetState(State.Active);
+        }
+       
+
+
+        idleTimer = idleDelay;
     }
 
     protected void RemoveInteractable(InteractableObjectBase interactable)
     {
-        _interactables.Remove(interactable);
+        if (_interactables.Contains(interactable))
+        {
+            _interactables.Remove(interactable);
+        }
+        
         if (_interactables.Count == 0 )
         {
-            SetState(State.Idle);
+            idleTimer = idleDelay;
         }
     }
 
