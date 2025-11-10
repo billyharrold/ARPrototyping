@@ -17,6 +17,7 @@ public class Enzyme : InteractableObjectBase
                 break;
             case State.Active:
                 Debug.Log(state.ToString() + "Enzyme");
+                
                 break;
             
         }

@@ -25,6 +25,7 @@ public abstract class InteractableObjectBase : MonoBehaviour
             AddInteractable(interactable);
         }
     }
+    
 
     private void OnTriggerExit(Collider other)
     {

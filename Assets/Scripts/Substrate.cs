@@ -10,7 +10,7 @@ public class Substrate : InteractableObjectBase
     public Transform Enzyme;
     public GameObject Enzyme1;
 
-    public float MoveSpeed = 2f;
+    public float MoveSpeed = 0.3f;
     public float rotationSpeed = 2f;
 
     private Vector3 originalPosition;
@@ -45,11 +45,17 @@ public class Substrate : InteractableObjectBase
         switch (state)
         {
             case State.Idle:
-                Debug.Log("IDLE - Subs");
+                //Debug.Log("IDLE - Subs");
+                Debug.Log(hasMerged + "Substrate");
+               // hasMerged = false;
                 break;
             case State.Active:
-                Debug.Log(state.ToString() + "Substrate");
-                //MoveToEnzyme();
+                Debug.Log(hasMerged + "Substrate");
+                if (hasMerged == true)
+                {
+                    MoveToEnzyme();
+                }
+                
                 break;
             
         }
@@ -69,8 +75,8 @@ public class Substrate : InteractableObjectBase
 
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        MoveToEnzyme();
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    //MoveToEnzyme();
+    //}
 }
