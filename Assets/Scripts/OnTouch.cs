@@ -5,9 +5,7 @@ public class OnTouch : MonoBehaviour
 
     public GameObject enzymePopUp;
     public Transform child;
-    //public GameObject enzyme;
-
-
+  
     private GameObject popUp;
 
 
@@ -40,7 +38,9 @@ public class OnTouch : MonoBehaviour
             {
                 Debug.Log("hit");
                 Debug.Log(hit.transform.name + " : " + hit.transform.tag);
-
+                
+                
+                // Checking hit on Enzyme
                 if (hit.transform.CompareTag("Enzyme"))
                 {
                     if (popUp == null)
@@ -62,6 +62,30 @@ public class OnTouch : MonoBehaviour
                     }
                     
                 }
+
+                //// Checking Hit on Substrate
+                //if (hit.transform.CompareTag("Substrate"))
+                //{
+                //    if (popUp == null)
+                //    {
+                //        Vector3 pos = hit.point;
+
+                //        Quaternion rot = Quaternion.Euler(0f, 0f, 0f);
+
+
+                //        //pos.z += 0.25f;
+                //        //pos.y += 0.25f;
+                //        popUp = Instantiate(enzymePopUp, child.transform.position, rot, child);
+                //    }
+                //    else
+                //    {
+                //        Destroy(popUp);
+                //        popUp = null;
+                //        Debug.Log("Pop up removed");
+                //    }
+
+                //}
+
             }
         }
     }
