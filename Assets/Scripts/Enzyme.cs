@@ -29,5 +29,11 @@ public class Enzyme : InteractableObjectBase
         Debug.Log("collided");
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        collided = false;
+
+    }
+
 
 }
