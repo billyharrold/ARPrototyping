@@ -4,6 +4,7 @@ public class SubstrateMove : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    public Enzyme enzymeScript;
 
     public GameObject enzyme;
     public GameObject substrate;
@@ -31,8 +32,9 @@ public class SubstrateMove : MonoBehaviour
         float distance = Vector3.Distance(activeSite.transform.position, enzyme.transform.position);
 
 
-        if (distance <= mergeDistance)
+        if (enzymeScript.collided == true)
         {
+            Debug.Log("Function call");
             MoveToEnzyme();
         }
 
@@ -50,5 +52,7 @@ public class SubstrateMove : MonoBehaviour
         //transform.SetParent(activeSite);
         merging = true;
     }
+
+   
 
 }

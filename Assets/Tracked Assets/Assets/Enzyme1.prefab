@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &392294908246762863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8439693907093992551}
+  m_Layer: 0
+  m_Name: Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8439693907093992551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392294908246762863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2814610196075574006}
+  m_Father: {fileID: 1654606601872665853}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496273564834413408
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,12 +59,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496273564834413408}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0082, y: 0.01214, z: -0.0254}
-  m_LocalScale: {x: 0.9884427, y: 0.9745428, z: 0.9745428}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.008200002, y: 0.012140002, z: -0.0254}
+  m_LocalScale: {x: 0.9884427, y: 0.97454286, z: 0.97454286}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1654606601872665853}
+  m_Father: {fileID: 8439693907093992551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3207923573214656909
 MeshFilter:
@@ -99,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b342213d3842434ca71dde5782e0e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enzymeScript: {fileID: 208442589031340648}
   enzyme: {fileID: 2143017829070452295}
   substrate: {fileID: 212280519162725164, guid: 9084ce7c359400d4f93bf369d3e74b99, type: 3}
   moveSpeed: 2
@@ -129,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 5284930558362543483}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0012, y: 0.0081, z: -0.0002}
+  m_LocalPosition: {x: -0.0012, y: 0.0038, z: -0.0002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -257,7 +290,7 @@ PrefabInstance:
       addedObject: {fileID: 2148374020417615733}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a1255410be4992f4fa054c63a506f7b4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2814610196075574006}
+      addedObject: {fileID: 8439693907093992551}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1255410be4992f4fa054c63a506f7b4, type: 3}
       insertIndex: -1
@@ -315,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db7bdf495b8e5c43a3a7f425266bd52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collided: 0
 --- !u!54 &7780823395976650561
 Rigidbody:
   m_ObjectHideFlags: 0

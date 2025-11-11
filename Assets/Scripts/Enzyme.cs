@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public class Enzyme : InteractableObjectBase
 {
+    public bool collided;
 
     protected override void SetState(State state)
     {
@@ -18,8 +19,14 @@ public class Enzyme : InteractableObjectBase
             case State.Active:
                 Debug.Log(state.ToString() + "Enzyme");
                 break;
-            
+
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        collided = true;
+        Debug.Log("collided");
     }
 
 
