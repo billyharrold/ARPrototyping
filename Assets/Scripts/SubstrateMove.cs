@@ -28,6 +28,8 @@ public class SubstrateMove : MonoBehaviour
     public float rotationSpeed = 2f;
 
     private Renderer rend;
+    private Renderer Lrend;
+    private Renderer Rrend;
 
     //private bool arrived = false;
 
@@ -38,6 +40,11 @@ public class SubstrateMove : MonoBehaviour
         rend = GetComponent<Renderer>();
         rend.enabled = false;
 
+        Lrend = LSubstrate.GetComponent<Renderer>();
+        Lrend.enabled = false;
+
+        Rrend = RSubstrate.GetComponent<Renderer>();
+        Rrend.enabled = false;
 
         spawnPoint = enzyme.transform.Find("Spawn Point");
         activeSite = enzyme.transform.Find("Active Site");
@@ -47,6 +54,9 @@ public class SubstrateMove : MonoBehaviour
 
         b1 = enzyme.transform.Find("B1");
         b2 = enzyme.transform.Find("B2");
+
+        LSubstrate.transform.position = b1.position;
+        RSubstrate.transform.position = b2.position;
 
         if (activeSite == null )
         {
@@ -59,7 +69,8 @@ public class SubstrateMove : MonoBehaviour
     {
         float distance = Vector3.Distance(activeSite.transform.position, transform.position);
 
-        rend.enabled = merging;
+        //rend.enabled = merging;
+        
 
         if (enzymeScript.collided == true)
         {
@@ -69,6 +80,7 @@ public class SubstrateMove : MonoBehaviour
         if (enzymeScript.collided == false)
         {
             merging = false;
+            
 
         }
 
@@ -83,13 +95,15 @@ public class SubstrateMove : MonoBehaviour
         {
             
             transform.position = spawnPoint.position;
-           // ResetReaction();
+
+            ResetReaction();
             //arrived = false;
         }
 
         if (distance < 0.01f)
         {
             React();
+            rend.enabled = false;
         }
 
     }
@@ -98,7 +112,7 @@ public class SubstrateMove : MonoBehaviour
     private void MoveToEnzyme()
     {
         //transform.SetParent(activeSite);
-        
+        rend.enabled = true;
         merging = true;
     }
 
@@ -112,12 +126,16 @@ public class SubstrateMove : MonoBehaviour
     {
         LSubstrate.transform.position = Vector3.Lerp(LSubstrate.transform.position, p1.position, Time.deltaTime * moveSpeed);
         RSubstrate.transform.position = Vector3.Lerp(RSubstrate.transform.position, p2.position, Time.deltaTime * moveSpeed);
+        Lrend.enabled = true;
+        Rrend.enabled = true;
     }
 
     private void ResetReaction()
     {
         LSubstrate.transform.position = b1.position;
         RSubstrate.transform.position= b2.position;
+        Lrend.enabled = false;
+        Rrend.enabled = false;
     }
 
 }
