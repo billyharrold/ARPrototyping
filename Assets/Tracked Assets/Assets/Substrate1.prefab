@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 1872989766876250374}
   - component: {fileID: 4992751968182731406}
   - component: {fileID: 880780435493085722}
-  - component: {fileID: 8007017534751559898}
   m_Layer: 0
   m_Name: AnimatedMesh
   m_TagString: Untagged
@@ -118,22 +117,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8007017534751559898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3779219856257745227}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b342213d3842434ca71dde5782e0e9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enzyme: {fileID: 2143017829070452295, guid: e50c2f51c4ac31441950aaaab317e64e, type: 3}
-  moveSpeed: 2
-  rotationSpeed: 2
-  mergeDistance: 10
 --- !u!1001 &1023238300223356541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,9 +221,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fb641a7221ffaa4eb0d369b1c3fd941, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4639503432710378883}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fb641a7221ffaa4eb0d369b1c3fd941, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3225915374994724960}
   m_SourcePrefab: {fileID: 100100000, guid: 9fb641a7221ffaa4eb0d369b1c3fd941, type: 3}
 --- !u!1 &212280519162725164 stripped
 GameObject:
@@ -355,22 +335,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   substratePopUp: {fileID: 4125987435256140642, guid: fce7e02bb0ffb094eb1c9c7f4c8aa50d, type: 3}
   child: {fileID: 0}
---- !u!114 &3225915374994724960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212280519162725164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b342213d3842434ca71dde5782e0e9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enzyme: {fileID: 2143017829070452295, guid: e50c2f51c4ac31441950aaaab317e64e, type: 3}
-  moveSpeed: 2
-  rotationSpeed: 2
-  mergeDistance: 10
 --- !u!4 &700869038936316310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fb641a7221ffaa4eb0d369b1c3fd941, type: 3}
