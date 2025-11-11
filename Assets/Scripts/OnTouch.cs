@@ -6,6 +6,11 @@ public class OnTouch : MonoBehaviour
     public GameObject enzymePopUp;
     public Transform child;
     //public GameObject enzyme;
+
+
+    private GameObject popUp;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,13 +41,26 @@ public class OnTouch : MonoBehaviour
                 Debug.Log("hit");
                 Debug.Log(hit.transform.name + " : " + hit.transform.tag);
 
-                if (hit.transform.tag == "Enzyme")
+                if (hit.transform.CompareTag("Enzyme"))
                 {
-                    Vector3 pos = hit.point;
+                    if (popUp == null)
+                    {
+                        Vector3 pos = hit.point;
+
+                        Quaternion rot = Quaternion.Euler(0f, 0f, 0f);
+
+
+                        //pos.z += 0.25f;
+                        //pos.y += 0.25f;
+                        popUp = Instantiate(enzymePopUp, child.transform.position, rot, child);
+                    }
+                    else
+                    {
+                        Destroy(popUp);
+                        popUp = null;
+                        Debug.Log("Pop up removed");
+                    }
                     
-                    //pos.z += 0.25f;
-                    //pos.y += 0.25f;
-                    Instantiate(enzymePopUp, child.transform.position, transform.rotation);
                 }
             }
         }
