@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39bb24e2bd7a482ca08117fb44b8e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Image: {fileID: 2800000, guid: bf7b822200c43594f91e817b66cb47da, type: 3}
+  m_Image: {fileID: 2800000, guid: 368552bba47b7a4418e9b7e9beb3a64c, type: 3}
   m_ImagePhysicalSizeMeters: {x: 0.1, y: 0.1}
   m_QuadMesh: {fileID: 0}
   m_QuadMaterial: {fileID: 0}
@@ -523,7 +523,7 @@ Transform:
   m_GameObject: {fileID: 4018397259464730911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.804, y: 0.406, z: -0.763}
+  m_LocalPosition: {x: 0.843, y: 0.406, z: -0.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39bb24e2bd7a482ca08117fb44b8e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Image: {fileID: 2800000, guid: 0f8dd8e50d71ba540996a7bf50b39394, type: 3}
+  m_Image: {fileID: 2800000, guid: 5c1ef3872d6968346971ec3f9be61ab6, type: 3}
   m_ImagePhysicalSizeMeters: {x: 0.1, y: 0.1}
   m_QuadMesh: {fileID: 0}
   m_QuadMaterial: {fileID: 0}
