@@ -820,7 +820,6 @@ MonoBehaviour:
   ARObjects:
   - {fileID: 2143017829070452295, guid: e50c2f51c4ac31441950aaaab317e64e, type: 3}
   - {fileID: 212280519162725164, guid: 9084ce7c359400d4f93bf369d3e74b99, type: 3}
-  - {fileID: 7957492367486405330, guid: 3c7d1f075857ec04986293a6b7d45fef, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
