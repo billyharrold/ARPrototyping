@@ -58,18 +58,25 @@ public class OnTouchSubs : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    OnClicked();
-    //}
+    private void Update()
+    {
+
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            OnClicked(mousePos);
+        }
+
+
+    }
 
 
     private void OnClicked(Vector2 screenpos)
     {
         
             //Debug.Log("CLICKED");
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(screenpos);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
@@ -83,7 +90,7 @@ public class OnTouchSubs : MonoBehaviour
                 {
                     if (popUp == null)
                     {
-                        Vector3 pos = hit.point;
+                        
 
                         Quaternion rot = Quaternion.Euler(0f, 0f, 0f);
 
