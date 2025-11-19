@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class OnTouch : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class OnTouch : MonoBehaviour
     public Transform child;
   
     private GameObject popUp;
+    private  controls;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,6 +29,13 @@ public class OnTouch : MonoBehaviour
        
         OnClicked();
     }
+
+
+    void InputCheck()
+    {
+
+    }
+
 
     void OnClicked()
     {
