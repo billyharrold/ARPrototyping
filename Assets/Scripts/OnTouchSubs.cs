@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class OnTouchSubs : MonoBehaviour
 {
@@ -7,11 +8,46 @@ public class OnTouchSubs : MonoBehaviour
     public Transform child;
 
     private GameObject popUp;
+    private InputSystem_Actions controls;
+    private Vector2 screenpos;
 
 
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        controls = new InputSystem_Actions();
+    }
+
+
+
+    void OnEnable()
+    {
+        controls.Enable();
+
+        controls.Touch.Position.performed += ctx =>
+        {
+            screenpos = ctx.ReadValue<Vector2>();
+        };
+
+        controls.Touch.Tap.performed += ctx =>
+        {
+            OnClicked(screenpos);
+        };
+
+    }
+
+    void OnDisable()
+    {
+        controls.Disable();
+    }
+
+
+
+
+
+
+
     void Start()
     {
         if (child == null)
@@ -23,16 +59,15 @@ public class OnTouchSubs : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        OnClicked();
-    }
+    //void Update()
+    //{
+    //    OnClicked();
+    //}
 
 
-    private void OnClicked()
+    private void OnClicked(Vector2 screenpos)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
+        
             //Debug.Log("CLICKED");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -66,7 +101,7 @@ public class OnTouchSubs : MonoBehaviour
 
                 }
             }
-        }
+        
 
     }
 }
