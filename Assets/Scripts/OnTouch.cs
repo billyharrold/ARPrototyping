@@ -12,12 +12,18 @@ public class OnTouch : MonoBehaviour
     private InputSystem_Actions controls;
     private Vector2 screenpos;
 
+    public AudioClip onPop;
+    public AudioClip offPop;
+
+    AudioSource audioSource;
+
 
    
 
     void Awake()
     {
         controls = new InputSystem_Actions();
+        audioSource = GetComponent<AudioSource>();
     }
 
   
@@ -98,10 +104,13 @@ public class OnTouch : MonoBehaviour
 
                         //pos.z += 0.25f;
                         //pos.y += 0.25f;
+                        audioSource.PlayOneShot(onPop);
                         popUp = Instantiate(enzymePopUp, child.transform.position, rot, child);
                     }
                     else
                     {
+                        audioSource.PlayOneShot(offPop);
+
                         Destroy(popUp);
                         popUp = null;
                         Debug.Log("Pop up removed");

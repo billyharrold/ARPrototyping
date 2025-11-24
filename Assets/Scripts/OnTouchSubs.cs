@@ -11,12 +11,18 @@ public class OnTouchSubs : MonoBehaviour
     private InputSystem_Actions controls;
     private Vector2 screenpos;
 
+    public AudioClip onPop;
+    public AudioClip offPop;
+
+    AudioSource audioSource;
+
 
 
 
     void Awake()
     {
         controls = new InputSystem_Actions();
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -95,12 +101,14 @@ public class OnTouchSubs : MonoBehaviour
                         Quaternion rot = Quaternion.Euler(0f, 0f, 0f);
 
 
+                        audioSource.PlayOneShot(onPop);
                         //pos.z += 0.25f;
                         //pos.y += 0.25f;
                         popUp = Instantiate(substratePopUp, child.transform.position, rot, child);
                     }
                     else
                     {
+                        audioSource.PlayOneShot(offPop);
                         Destroy(popUp);
                         popUp = null;
                         Debug.Log("Pop up removed");
