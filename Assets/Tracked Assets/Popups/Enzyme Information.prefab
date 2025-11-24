@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4555767690954315925}
   - component: {fileID: 4510152238204115015}
   - component: {fileID: 3405103908706646124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enzyme Information
   m_TagString: Untagged
   m_Icon: {fileID: 0}
