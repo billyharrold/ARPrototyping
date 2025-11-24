@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: FreeOutline
   m_EditorClassIdentifier: 
   m_Active: 1
-  settings: {fileID: 0}
+  settings: {fileID: 11400000, guid: 935423d57539e15478e094bf5f79c1b1, type: 2}
   shaders:
     mask: {fileID: 0}
     outline: {fileID: 0}
