@@ -105,11 +105,7 @@ public class SubstrateMove : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, activeSite.rotation, Time.deltaTime * rotationSpeed);
             //arrived = true;
 
-            if (!audioPlay)
-            {
-                audioSource.PlayOneShot(reactionClip);
-                audioPlay = true;
-            }
+           
             
         }
         if (!merging)
@@ -127,8 +123,12 @@ public class SubstrateMove : MonoBehaviour
             
             React();
             rend.enabled = false;
+            if (!audioPlay)
+            {
+                audioSource.PlayOneShot(reactionClip);
+                audioPlay = true;
+            }
 
-           
 
 
         }
