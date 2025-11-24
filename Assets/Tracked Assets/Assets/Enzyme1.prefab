@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8439693907093992551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3207923573214656909}
   - component: {fileID: 8634341437167381023}
   - component: {fileID: 7462008112798899368}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enzyme spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5043780389102963178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: B1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1286946584365151427}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 831161600670528115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: B2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2148374020417615733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Active Site
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 1614593302534480571}
   - component: {fileID: 1945292293175731426}
   - component: {fileID: 3931393510955277655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7566456184629374758}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Info Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,6 +453,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a1255410be4992f4fa054c63a506f7b4, type: 3}
       propertyPath: m_Name
       value: Enzyme1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a1255410be4992f4fa054c63a506f7b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a1255410be4992f4fa054c63a506f7b4, type: 3}
       propertyPath: m_TagString
@@ -654,6 +658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SubLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 8927069519609639390, guid: 41b83e6c0a6107340a61e8f767b2b001, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -680,6 +688,10 @@ PrefabInstance:
     - target: {fileID: 8186422110250918360, guid: cd8ca09270406a24485564705255c230, type: 3}
       propertyPath: m_Name
       value: SubRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186422110250918360, guid: cd8ca09270406a24485564705255c230, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8851775751647181666, guid: cd8ca09270406a24485564705255c230, type: 3}
       propertyPath: m_LocalScale.x
