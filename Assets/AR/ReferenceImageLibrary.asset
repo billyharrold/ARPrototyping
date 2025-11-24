@@ -21,29 +21,19 @@ MonoBehaviour:
       m_GuidLow: 5516914250995799788
       m_GuidHigh: 670805842993718944
     m_SerializedTextureGuid:
-      m_GuidLow: 14854231598804046439
-      m_GuidHigh: 13993014159141799161
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+      m_GuidLow: 6837844882370868695
+      m_GuidHigh: 16870564413818376296
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Enzyme1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4612965195753146532
       m_GuidHigh: 15538200518541414573
     m_SerializedTextureGuid:
-      m_GuidLow: 6477427842134478573
-      m_GuidHigh: 4881415551641788490
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+      m_GuidLow: 10697445546900849730
+      m_GuidHigh: 537775738502974475
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Substrate1
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5121863484550409604
-      m_GuidHigh: 7473899784902113949
-    m_SerializedTextureGuid:
-      m_GuidLow: 10337130021795828978
-      m_GuidHigh: 4772691139996764760
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
-    m_Name: Zombatar_1
     m_Texture: {fileID: 0}

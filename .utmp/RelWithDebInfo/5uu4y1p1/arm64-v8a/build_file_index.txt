@@ -1,0 +1,2 @@
+C:\Users\billy\Documents\Y3\AT\ARPrototyping\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\billy\Documents\Y3\AT\ARPrototyping\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
