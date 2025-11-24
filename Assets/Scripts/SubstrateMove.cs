@@ -23,6 +23,7 @@ public class SubstrateMove : MonoBehaviour
     private Transform b2;
     
     private bool merging = false;
+    private bool audioPlay = false;
 
     public float moveSpeed = 2f;
     public float rotationSpeed = 2f;
@@ -31,8 +32,17 @@ public class SubstrateMove : MonoBehaviour
     private Renderer Lrend;
     private Renderer Rrend;
 
+    public AudioClip movingTo;
+    public AudioClip reactionClip;
+
+    AudioSource audioSource;
+
     //private bool arrived = false;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -70,7 +80,9 @@ public class SubstrateMove : MonoBehaviour
         float distance = Vector3.Distance(activeSite.transform.position, transform.position);
 
         //rend.enabled = merging;
-        
+
+       
+
 
         if (enzymeScript.collided == true)
         {
@@ -84,12 +96,21 @@ public class SubstrateMove : MonoBehaviour
 
         }
 
+        
+
 
         if (merging)
         {
             transform.position = Vector3.Lerp(transform.position, activeSite.position, Time.deltaTime * moveSpeed);
             transform.rotation = Quaternion.Lerp(transform.rotation, activeSite.rotation, Time.deltaTime * rotationSpeed);
             //arrived = true;
+
+            if (!audioPlay)
+            {
+                audioSource.PlayOneShot(reactionClip);
+                audioPlay = true;
+            }
+            
         }
         if (!merging)
         {
@@ -97,13 +118,19 @@ public class SubstrateMove : MonoBehaviour
             transform.position = spawnPoint.position;
 
             ResetReaction();
+            audioPlay = false;
             //arrived = false;
         }
 
         if (distance < 0.01f)
         {
+            
             React();
             rend.enabled = false;
+
+           
+
+
         }
 
     }
@@ -112,6 +139,7 @@ public class SubstrateMove : MonoBehaviour
     private void MoveToEnzyme()
     {
         //transform.SetParent(activeSite);
+        //audioSource.PlayOneShot(movingTo);
         rend.enabled = true;
         merging = true;
     }
@@ -124,10 +152,12 @@ public class SubstrateMove : MonoBehaviour
 
     private void React()
     {
+        
         LSubstrate.transform.position = Vector3.Lerp(LSubstrate.transform.position, p1.position, Time.deltaTime * moveSpeed);
         RSubstrate.transform.position = Vector3.Lerp(RSubstrate.transform.position, p2.position, Time.deltaTime * moveSpeed);
         Lrend.enabled = true;
         Rrend.enabled = true;
+        
     }
 
     private void ResetReaction()
@@ -136,6 +166,7 @@ public class SubstrateMove : MonoBehaviour
         RSubstrate.transform.position= b2.position;
         Lrend.enabled = false;
         Rrend.enabled = false;
+       
     }
 
 }

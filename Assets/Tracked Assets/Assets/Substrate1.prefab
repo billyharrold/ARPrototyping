@@ -262,7 +262,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212280519162725164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36beac0c5a46b7241ac518216d3f64a4, type: 3}
   m_Name: 
@@ -271,8 +271,8 @@ MonoBehaviour:
   MoveSpeed: 2
   rotationSpeed: 2
   detectionDistance: 10
-  inRange: 0
   hasMerged: 0
+  unmergeDelay: 0.3
 --- !u!54 &-6910795760555761845
 Rigidbody:
   m_ObjectHideFlags: 0
