@@ -32,6 +32,10 @@ public class QuizManager : MonoBehaviour
 
     void updateQuestion()
     {
+        
+
+
+
         question.text = questions[currentQuestion].questionText;
 
         buttons[0].text = questions[currentQuestion].A;
@@ -81,7 +85,10 @@ public class QuizManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentQuestion >= questions.Count)
+        {
+            deactivateQuiz();
+        }
     }
     public void nextClick()
     {
@@ -89,6 +96,8 @@ public class QuizManager : MonoBehaviour
         enableAnswers(); 
         updateQuestion(); // debug to move on.
         
+        
+
     }
 
     public void activateQuiz()
@@ -112,7 +121,7 @@ public class QuizManager : MonoBehaviour
         }
         quizStart.gameObject.SetActive(true);
 
-
+        currentQuestion = 0;
     }
 
     public void resetQuiz()
