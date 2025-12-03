@@ -102,6 +102,7 @@ public class QuizManager : MonoBehaviour
 
     public void activateQuiz()
     {
+        updateQuestion();
         question.gameObject.SetActive(true);
         nextButton.gameObject.SetActive(true);
         foreach (var button in answerButtons)
@@ -122,6 +123,7 @@ public class QuizManager : MonoBehaviour
         quizStart.gameObject.SetActive(true);
 
         currentQuestion = 0;
+        updateQuestion();
     }
 
     public void resetQuiz()
