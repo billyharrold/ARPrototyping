@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e974f19e2155fe44b9c339e8d512f676, type: 3}
   m_Name: Q2
   m_EditorClassIdentifier: 
-  questionText: 
-  A: 
-  B: 
+  questionText: Which of these are an enzyme
+  A: DNA
+  B: Amalayse
+  answer: 66
