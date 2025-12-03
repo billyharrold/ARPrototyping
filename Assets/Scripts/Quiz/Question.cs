@@ -6,4 +6,5 @@ public class Question : ScriptableObject
     public string questionText;
     public string A;
     public string B;
+    public char answer;
 }

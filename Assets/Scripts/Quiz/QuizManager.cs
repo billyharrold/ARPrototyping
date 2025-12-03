@@ -21,6 +21,7 @@ public class QuizManager : MonoBehaviour
     void Start()
     {
         updateQuestion();
+        //nextButton.interactable = false;   
     }
 
     void updateQuestion()
@@ -29,11 +30,33 @@ public class QuizManager : MonoBehaviour
 
         buttons[0].text = questions[currentQuestion].A;
         buttons[1].text = questions[currentQuestion].B;
+        
+    }
+
+    public void checkAnswer(string answer)
+    {
+        if (answer[0] == questions[currentQuestion].answer)
+        {
+            score += 5;
+            buttons[2].text = "Correct" + score.ToString() + "Points gained";
+        }
+        else
+        {
+            buttons[2].text = "Incorrect, try again";
+        }
+            
+
+          
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void nextClick()
+    {
+        currentQuestion++;
+        updateQuestion(); // debug to move on.
     }
 }
