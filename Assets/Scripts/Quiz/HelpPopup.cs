@@ -8,6 +8,10 @@ public class HelpPopup : MonoBehaviour
 
     public GameObject helpPanel;
 
+    public Button quizButton;
+
+    public Button leaderboardButton;
+
     void Start()
     {
         hidePanel();
@@ -22,11 +26,16 @@ public class HelpPopup : MonoBehaviour
     public void showPanel()
     {
         helpPanel.SetActive(true);
+        quizButton.gameObject.SetActive(false);
+        leaderboardButton.gameObject.SetActive(false);
     }
 
     public void hidePanel()
     {
         helpPanel.SetActive(false);
+        quizButton.gameObject.SetActive(true);
+        leaderboardButton.gameObject.SetActive(true);
+
     }
 
 
