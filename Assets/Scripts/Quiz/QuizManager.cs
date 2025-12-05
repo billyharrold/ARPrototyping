@@ -9,6 +9,8 @@ public class QuizManager : MonoBehaviour
 
     public List<Question> questions = new List<Question>(); // List of Scriptable Object Questions
 
+    public GameObject panel;
+
     public TMP_Text question;
     public TMP_Text[] buttons;
     public Button nextButton;
@@ -41,6 +43,8 @@ public class QuizManager : MonoBehaviour
         buttons[0].text = questions[currentQuestion].A;
         buttons[1].text = questions[currentQuestion].B;
 
+        buttons[2].text = "Next Question";
+
         
         
     }
@@ -51,13 +55,13 @@ public class QuizManager : MonoBehaviour
         {
             
             score += 5;
-            buttons[2].text = "Correct" + score.ToString() + "Points gained";
+            buttons[2].text = "Correct," + score.ToString() + " Points ";
             nextButton.interactable = true;
 
         }
         else
         {
-            buttons[2].text = "Incorrect, try again";
+            buttons[2].text = "Incorrect, Next Question";
             nextButton.interactable = true;
         }
 
@@ -105,6 +109,7 @@ public class QuizManager : MonoBehaviour
         updateQuestion();
         question.gameObject.SetActive(true);
         nextButton.gameObject.SetActive(true);
+        panel.SetActive(true);
         foreach (var button in answerButtons)
         {
             button.gameObject.SetActive(true);
@@ -116,6 +121,7 @@ public class QuizManager : MonoBehaviour
     {
        question.gameObject.SetActive(false);
        nextButton.gameObject.SetActive(false);
+       panel.SetActive(false);
        foreach (var button in answerButtons)
         {
             button.gameObject.SetActive(false);
